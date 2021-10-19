@@ -1,0 +1,43 @@
+.header {
+    height: 50px;
+    width: 100%;
+    background: #fadab9;
+    display: flex;
+}
+
+.header a{
+    text-align: center;
+    padding: 15px 15px 15px 15px;
+    text-transform: uppercase;
+    color: black;
+    margin-left: 2%;
+}
+
+.header a:link
+{
+    text-decoration: none;
+}
+
+.header a:hover{
+    color: #f5b043;
+}
+
+.header a:nth-child(3){
+    margin-right: auto;
+}
+
+.a aktual{
+    color: pink;
+}
+
+.header:first-child{
+    position: sticky;
+    top: 0;
+}
+
+.footer {
+    height: 50px;
+    background: #ffce6f;
+    text-align: center;
+    padding-top: 15px;
+}

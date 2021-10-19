@@ -1,0 +1,51 @@
+body {
+    margin: 0;
+    background-color: #ffefd5;
+}
+
+
+.columns {
+    display: flex;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.main {
+    top: 30px;
+    background: #ffffff;
+    width: 62%;
+    margin-left: 7%;
+    text-align: center;
+    padding: 15px 15px;
+
+}
+
+
+
+.aboutme {
+    width: 20%;
+    background: #ffffff;
+    margin-left: 4%;
+    margin-right: 7%;
+    padding: 5px 5px 5px 5px;
+}
+
+.aboutme img{
+
+    width: 95%;
+}
+
+.aboutme p{
+    text-align: center;
+}
+
+
+
+h2, h3{
+    text-align: center;
+
+}
+
+p{
+    text-align: left;
+}

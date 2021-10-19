@@ -1,0 +1,32 @@
+body {
+    margin: 0;
+    background-color: #ffefd5;
+}
+
+
+.columns {
+    display: flex;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.main {
+    width: 100%;
+    background: #ffffff;
+    margin-right: 7%;
+    margin-left: 7%;
+    text-align: center;
+    padding: 15px 15px;
+
+
+}
+
+
+h2, h3{
+    text-align: center;
+
+}
+
+p{
+    text-align: left;
+}
