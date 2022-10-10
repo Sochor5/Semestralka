@@ -1,16 +1,17 @@
 .header {
-    height: 50px;
-    width: 100%;
-    background: #fadab9;
+    list-style: none;
+    margin: 0;
+    background: #f67b00;
     display: flex;
+    flex-flow: row wrap;
+    justify-content: left;
 }
 
 .header a{
-    text-align: center;
-    padding: 15px 15px 15px 15px;
-    text-transform: uppercase;
-    color: black;
-    margin-left: 2%;
+    text-decoration: none;
+    display: block;
+    padding: 1em;
+    color: #000000;
 }
 
 .header a:link
@@ -22,8 +23,8 @@
     color: #f5b043;
 }
 
-.header a:nth-child(3){
-    margin-right: auto;
+.header a:nth-child(4){
+    justify-content: right;
 }
 
 .a aktual{
@@ -36,8 +37,38 @@
 }
 
 .footer {
-    height: 50px;
+    list-style: none;
+    margin: 0;
     background: #ffce6f;
     text-align: center;
-    padding-top: 15px;
+    padding: 0.5em;
+}
+
+.footer a{
+    text-decoration: none;
+    padding: 0.5em;
+    color: #000000;
+}
+@media all and (max-width: 800px) {
+    .header {
+        justify-content: space-around;
+    }
+}
+
+@media all and (max-width: 600px) {
+    .header {
+        flex-flow: column wrap;
+        padding: 0;
+    }
+
+    .header a {
+        text-align: center;
+        padding: 10px;
+        border-top: 1px solid rgba(255, 255, 255, 0.3);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .header li:last-of-type a {
+        border-bottom: none;
+    }
 }
