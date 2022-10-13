@@ -3,8 +3,8 @@
     margin: 0;
     background: #f67b00;
     display: flex;
-    flex-flow: row wrap;
-    justify-content: left;
+    /*flex-flow: row wrap;*/
+  /*  justify-content: left;*/
 }
 
 .header a{
