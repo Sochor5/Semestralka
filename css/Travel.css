@@ -20,6 +20,10 @@ body {
 .top5 a:hover{
     color: #ff9b00;
 }
+.newPost:hover{
+    background-color: green;
+}
+
 
 .columns {
     display: flex;
@@ -27,12 +31,26 @@ body {
     margin-bottom: 5%;
     align-items: flex-start;
 }
+.columnsBlog {
+    display: flex;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
 
 .main {
     background: #ffffff;
     width: 66%;
     margin-left: 5%;
     padding: 1em;
+}
+
+.mainBlog {
+    width: 90%;
+    background: #ffffff;
+    margin-right: 5%;
+    margin-left: 5%;
+    text-align: center;
+    padding: 1.5em;
 }
 
 .block {
@@ -74,6 +92,55 @@ body {
     text-align: left;
     font-size: smaller;
 }
+
+input{
+    margin: 10px;
+    padding: 1% 1%;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    resize: none;
+}
+.naspis{
+    width: 30%;
+
+}
+.strucnyText{
+    width: 60%;
+
+}
+.text {
+    width: 100%;
+
+}
+
+.newPost{
+    background-color: greenyellow;
+}
+
+button{
+    margin-top: 10px;
+}
+
+.button1 {
+
+    background-color: red;
+}
+
+
+.mainBlog img{
+    width: 90%;
+}
+
+.mainBlog h2{
+    text-align: center;
+}
+
+.mainBlog p{
+    text-align: left;
+}
+
 @media all and (max-width: 600px) {
     .columns {
         display: flex;
