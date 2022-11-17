@@ -15,7 +15,7 @@
 <div class="header" >
     <a  href="http://localhost:58849/semestralka/HTML.html?_ijt=kj6h6rt8bb1r2dmij1j3h62h0a&_ij_reload=RELOAD_ON_SAVE" class="aktual" >HOME</a>
     <a href="Travel.php">TRAVEL</a>
-    <a class="rightHeader" href="Travel.php">Login</a>
+    <a class="rightHeader" href="login/login.php">LOGIN</a>
     <a  href="#home" class="fa fa-search"></a>
 
 
@@ -93,9 +93,10 @@
 </div>
 
 <div class="footer">
-    <footer class="footer padding">© 2021-2022 Žilinská univerzita v Žiline, Pavel Sochor.</footer>
-    <a href="https://www.facebook.com/palo.sochor/" class="fa fa-facebook"></a>
-    <a href="https://www.instagram.com/palasssochi/" class="fa fa-instagram"></a>
+    <footer class="footer padding">© 2021-2022 Žilinská univerzita v Žiline, Pavel Sochor.<br>
+        <a href="https://www.facebook.com/palo.sochor/" class="fa fa-facebook"></a>
+        <a href="https://www.instagram.com/palasssochi/" class="fa fa-instagram"></a>
+    </footer>
 </div>
 
 </body>

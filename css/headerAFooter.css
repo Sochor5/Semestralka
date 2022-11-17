@@ -38,10 +38,14 @@
 
 .footer {
     list-style: none;
-    margin: 0;
+
     background: #ffce6f;
     text-align: center;
     padding: 0.5em;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
 }
 
 .footer a{

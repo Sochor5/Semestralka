@@ -54,7 +54,7 @@ if (isset($_POST['text'])) {
 <div class="header" >
     <a href="index.php" class="aktual" >HOME</a>
     <a href="Travel.php">TRAVEL</a>
-    <a class="rightHeader" href="Travel.php">Login</a>
+    <a class="rightHeader" href="login/login.php">Login</a>
     <a  href="#home" class="fa fa-search"></a>
 </div>
 
@@ -63,16 +63,16 @@ if (isset($_POST['text'])) {
 
     <?php
     if (isset($_GET['blog'])){
-        include "blog.php";
+        include "Travel_php/Blog.php";
 
     }else {
         if (isset($_GET['New'])) {
-            include "new-view.php";
+            include "Travel_php/new-view.php";
         } else {
             if (isset($_GET['edit'])){
-                include "edit_view.php";
+                include "Travel_php/edit_view.php";
             } else {
-                include "post-view.php";
+                include "Travel_php/post-view.php";
             }
 
         }
@@ -84,9 +84,10 @@ if (isset($_POST['text'])) {
 </div>
 
 <div class="footer">
-    <footer class="footer padding">© 2021-2022 Žilinská univerzita v Žiline, Pavel Sochor.</footer>
+    <footer class="footer padding">© 2021-2022 Žilinská univerzita v Žiline, Pavel Sochor.<br>
     <a href="https://www.facebook.com/palo.sochor/" class="fa fa-facebook"></a>
     <a href="https://www.instagram.com/palasssochi/" class="fa fa-instagram"></a>
+    </footer>
 </div>
 
 </body>

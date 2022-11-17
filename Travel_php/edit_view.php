@@ -9,7 +9,7 @@ $post = $db->loadOnePost($_GET['edit']);
         <main class="mainBlog">
             <div>
                 <form " method="post">
-                <textarea class="naspis" name="nazov">
+                <textarea class="nadpis" name="nazov">
                   <?php
                   echo $post->nazov;
                   ?>
