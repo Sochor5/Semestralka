@@ -5,6 +5,15 @@ include "Post.php";
 
 $db = new DB();
 
+if (isset($_GET['edit']) && isset($_POST['id'])){
+    $updatePost = $db->loadOnePost($_POST['id']);
+    $updatePost->text = $_POST['text'];
+    $updatePost->nazov = $_POST['nazov'];
+    $updatePost->strucnyText = $_POST['strucnyText'];
+    $db->storePost($updatePost);
+    header("Location: ?");
+    die();
+}
 
 if (isset($_GET['delete'])){
     $db->remove($_GET['delete']);
@@ -45,8 +54,8 @@ if (isset($_POST['text'])) {
 <div class="header" >
     <a href="index.php" class="aktual" >HOME</a>
     <a href="Travel.php">TRAVEL</a>
-    <a href="Travel.php">NIECO</a>
-    <a href="#home" class="fa fa-search"></a>
+    <a class="rightHeader" href="Travel.php">Login</a>
+    <a  href="#home" class="fa fa-search"></a>
 </div>
 
 <div class="body">
@@ -60,7 +69,12 @@ if (isset($_POST['text'])) {
         if (isset($_GET['New'])) {
             include "new-view.php";
         } else {
-            include "post-view.php";
+            if (isset($_GET['edit'])){
+                include "edit_view.php";
+            } else {
+                include "post-view.php";
+            }
+
         }
     }
     ?>

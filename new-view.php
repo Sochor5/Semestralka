@@ -8,8 +8,7 @@
                     <input class="strucnyText" strucnyText="text" name="strucnyText" placeholder="Struční popis od čom je článok"><br>
                     <input class="text" text="text" name="text" placeholder="Hlavný obsah článku"><br>
                     <input type="file" name="img"><br>
-
-                  <input type="submit" value="odoslat">
+                    <input type="submit" value="odoslat">
 
                 </form>
             </div>

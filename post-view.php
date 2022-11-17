@@ -28,7 +28,7 @@
             if ($post->idPost != 0 ){
                 if ($pocet < 5) {
                     $pocet++; ?>
-        <a href="Blog.html" ><p> <?php echo $post->nazov  ?> </p></a>
+        <a href="?blog=<?php echo $post->idPost ?>" ><p> <?php echo $post->nazov  ?> </p></a>
         <?php }}}?>
     </aside>
 </div>

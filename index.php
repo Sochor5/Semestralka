@@ -15,8 +15,8 @@
 <div class="header" >
     <a  href="http://localhost:58849/semestralka/HTML.html?_ijt=kj6h6rt8bb1r2dmij1j3h62h0a&_ij_reload=RELOAD_ON_SAVE" class="aktual" >HOME</a>
     <a href="Travel.php">TRAVEL</a>
-    <a href="Travel.php">NIECO</a>
-    <a href="#home" class="fa fa-search"></a>
+    <a class="rightHeader" href="Travel.php">Login</a>
+    <a  href="#home" class="fa fa-search"></a>
 
 
 </div>
