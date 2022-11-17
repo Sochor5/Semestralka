@@ -20,8 +20,19 @@
 
 </div>
 <div class="columnsBlog">
-    <div class="mainBlog login">
-        aaaa
+    <div class="mainBlog">
+        <form method="post">
+            <h1>Registrácia
+                </h1>
+            <h4>Je to rýchle a jednoduché.</h4>
+            <input class="loginSize" type="text" name="meno" placeholder="meno"><br>
+            <input class="loginSize" type="text" name="priezvisko" placeholder="priezvisko"><br>
+            <input class="loginSize" type="text" name="login" placeholder="Username"><br>
+            <input class="loginSize" type="text" name="Heslo" placeholder="Heslo"><br>
+            <a href="NewAccount.php">
+                <button class="loginSize" type="button" class="button2" >Registrácia</button>
+            </a>
+        </form>
     </div>
 </div>
 

@@ -1,5 +1,9 @@
 <?php
+session_start();
+include "../DBuser.php";
+$auth = new DBuser();
 ?>
+
 <html lang="sk">
 <head>
     <meta charset="UTF-8">
@@ -14,7 +18,11 @@
 <div class="header" >
     <a href="../index.php" class="aktual" >HOME</a>
     <a href="../Travel.php">TRAVEL</a>
+    <?php if ($auth->isLogged){ ?>
+        <a class="rightHeader" href="?odhlas">ODHLASIT</a>
+    <?php }  else {?>
     <a class="rightHeader" href="login.php">LOGIN</a>
+    <?php  } ?>
     <a  href="#home" class="fa fa-search"></a>
 
 

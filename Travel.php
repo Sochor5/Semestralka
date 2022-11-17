@@ -1,10 +1,8 @@
 <?php
 session_start();
-include "DB.php";
+include "DBpost.php";
 include "Post.php";
-
 $db = new DB();
-
 if (isset($_GET['edit']) && isset($_POST['id'])){
     $updatePost = $db->loadOnePost($_POST['id']);
     $updatePost->text = $_POST['text'];
@@ -54,7 +52,10 @@ if (isset($_POST['text'])) {
 <div class="header" >
     <a href="index.php" class="aktual" >HOME</a>
     <a href="Travel.php">TRAVEL</a>
-    <a class="rightHeader" href="login/login.php">Login</a>
+
+
+        <a class="rightHeader" href="login/login.php">LOGIN</a>
+
     <a  href="#home" class="fa fa-search"></a>
 </div>
 
