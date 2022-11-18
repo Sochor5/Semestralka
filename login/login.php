@@ -1,6 +1,6 @@
 <?php
 session_start();
-include "../DBuser.php";
+include "DBuser.php";
 $auth = new DBuser();
 ?>
 
@@ -18,7 +18,7 @@ $auth = new DBuser();
 <div class="header" >
     <a href="../index.php" class="aktual" >HOME</a>
     <a href="../Travel.php">TRAVEL</a>
-    <?php if ($auth->isLogged){ ?>
+    <?php if ($_SESSION['logged']){ ?>
         <a class="rightHeader" href="?odhlas">ODHLASIT</a>
     <?php }  else {?>
     <a class="rightHeader" href="login.php">LOGIN</a>

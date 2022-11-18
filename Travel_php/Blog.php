@@ -4,7 +4,6 @@
 
 $post = $db->loadOnePost($_GET['blog']);
     ?>
-
 <div class="body">
     <div class="columnsBlog">
         <main class="mainBlog">
@@ -13,22 +12,18 @@ $post = $db->loadOnePost($_GET['blog']);
             <?php if ($post->file) {?>
             <img src="<?php  echo  $post->file ?>" class="card-img-top" alt="..."><br>
             <?php } ?>
+            <?php if ($_SESSION['logged']){ ?>
+                <a href="?edit=<?php echo $post->idPost ?>" >
+                    <button type="button" class="button2">Edit</button>
+                </a><br>
 
-
-
-            <a href="?edit=<?php echo $post->idPost ?>" >
-                <button type="button" class="button2">Edit</button>
-            </a><br>
-
-            <a href="?delete=<?php echo $post->idPost ?>" >
-                <button type="button" class="button1">Vymaz</button>
-            </a>
+                <a href="?delete=<?php echo $post->idPost ?>" >
+                    <button type="button" class="button1">Vymaz</button>
+                </a>
+            <?php }  ?>
         </main>
     </div>
 </div>
-<?php
-
-?>
 
 
 

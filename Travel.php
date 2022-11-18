@@ -1,42 +1,40 @@
 <?php
 session_start();
-include "DBpost.php";
-include "Post.php";
+include "Travel_php/DBpost.php";
+include "Travel_php/Post.php";
 $db = new DB();
-if (isset($_GET['edit']) && isset($_POST['id'])){
-    $updatePost = $db->loadOnePost($_POST['id']);
-    $updatePost->text = $_POST['text'];
-    $updatePost->nazov = $_POST['nazov'];
-    $updatePost->strucnyText = $_POST['strucnyText'];
-    $db->storePost($updatePost);
-    header("Location: ?");
-    die();
-}
 
-if (isset($_GET['delete'])){
-    $db->remove($_GET['delete']);
-}
-
-if (isset($_POST['text'])) {
-    if (isset($_POST['nazov'])) {
-        if (isset($_POST['strucnyText'])){
-            $newPost = new Post();
-            $newPost->text = $_POST['text'];
-            $newPost->nazov = $_POST['nazov'];
-            $newPost->strucnyText = $_POST['strucnyText'];
-            if (isset($_FILES['img']) && $_FILES['img']['error'] == UPLOAD_ERR_OK) {
-                $newName = "img" . DIRECTORY_SEPARATOR . time() . "_" . $_FILES["img"]["name"];
-                if (move_uploaded_file($_FILES["img"]["tmp_name"], $newName)) {
-                    $newPost->file = $newName;
+if ($_SESSION['logged']){
+    if (isset($_GET['edit']) && isset($_POST['id'])){
+        $updatePost = $db->loadOnePost($_POST['id']);
+        $updatePost->text = $_POST['text'];
+        $updatePost->nazov = $_POST['nazov'];
+        $updatePost->strucnyText = $_POST['strucnyText'];
+        $db->storePost($updatePost);
+        header("Location: ?");
+        die();
+    }
+    if (isset($_GET['delete'])){
+        $db->remove($_GET['delete']);
+    }
+    if (isset($_POST['text'])) {
+        if (isset($_POST['nazov'])) {
+            if (isset($_POST['strucnyText'])){
+                $newPost = new Post();
+                $newPost->text = $_POST['text'];
+                $newPost->nazov = $_POST['nazov'];
+                $newPost->strucnyText = $_POST['strucnyText'];
+                if (isset($_FILES['img']) && $_FILES['img']['error'] == UPLOAD_ERR_OK) {
+                    $newName = "img" . DIRECTORY_SEPARATOR . time() . "_" . $_FILES["img"]["name"];
+                    if (move_uploaded_file($_FILES["img"]["tmp_name"], $newName)) {
+                        $newPost->file = $newName;
+                    }
                 }
+                $db->storePost($newPost);
             }
-            $db->storePost($newPost);
-
         }
     }
-
-}
-
+ }
 ?>
 <html>
 <head>
@@ -52,20 +50,17 @@ if (isset($_POST['text'])) {
 <div class="header" >
     <a href="index.php" class="aktual" >HOME</a>
     <a href="Travel.php">TRAVEL</a>
-
-
+    <?php if ($_SESSION['logged']){ ?>
+        <a class="rightHeader" href="login/login.php?odhlas">ODHLASIT</a>
+    <?php }  else {?>
         <a class="rightHeader" href="login/login.php">LOGIN</a>
-
+    <?php  } ?>
     <a  href="#home" class="fa fa-search"></a>
 </div>
-
 <div class="body">
-
-
     <?php
     if (isset($_GET['blog'])){
         include "Travel_php/Blog.php";
-
     }else {
         if (isset($_GET['New'])) {
             include "Travel_php/new-view.php";
@@ -75,21 +70,14 @@ if (isset($_POST['text'])) {
             } else {
                 include "Travel_php/post-view.php";
             }
-
         }
-    }
-    ?>
-
-
-
+    } ?>
 </div>
-
 <div class="footer">
     <footer class="footer padding">© 2021-2022 Žilinská univerzita v Žiline, Pavel Sochor.<br>
     <a href="https://www.facebook.com/palo.sochor/" class="fa fa-facebook"></a>
     <a href="https://www.instagram.com/palasssochi/" class="fa fa-instagram"></a>
     </footer>
 </div>
-
 </body>
 </html>

@@ -1,4 +1,5 @@
 <?php
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="sk">
@@ -10,21 +11,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-
-
 <div class="header" >
     <a  href="http://localhost:58849/semestralka/HTML.html?_ijt=kj6h6rt8bb1r2dmij1j3h62h0a&_ij_reload=RELOAD_ON_SAVE" class="aktual" >HOME</a>
     <a href="Travel.php">TRAVEL</a>
-    <a class="rightHeader" href="login/login.php">LOGIN</a>
+    <?php if ($_SESSION['logged']){ ?>
+        <a class="rightHeader" href="login/login.php?odhlas">ODHLASIT</a>
+    <?php }  else {?>
+        <a class="rightHeader" href="login/login.php">LOGIN</a>
+    <?php  } ?>
     <a  href="#home" class="fa fa-search"></a>
-
-
 </div>
-
 <div class="body">
-
     <div class="columns">
-
         <main class="main">
             <h2>Lorem Ipsum</h2><br>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam luctus elit vel vulputate rhoncus.
@@ -72,9 +70,7 @@
                 Mauris sit amet lacus sit amet quam ullamcorper consectetur eget ac quam.
                 Pellentesque consectetur elementum condimentum.
             </p><br>
-
         </main>
-
         <div class="aboutme">
             <h3> ABOUT ME</h3>
             <img alt="" src="1634331496115.jpg">
@@ -87,17 +83,13 @@
                 nec nec diam. Fusce viverra molestie nulla non suscipit. Donec sit amet
                 condimentum orci. Vestibulum quis ipsum commodo, iaculis leo sed, auctor mauris.</p>
         </div>
-
     </div>
-
 </div>
-
 <div class="footer">
     <footer class="footer padding">© 2021-2022 Žilinská univerzita v Žiline, Pavel Sochor.<br>
         <a href="https://www.facebook.com/palo.sochor/" class="fa fa-facebook"></a>
         <a href="https://www.instagram.com/palasssochi/" class="fa fa-instagram"></a>
     </footer>
 </div>
-
 </body>
 </html>

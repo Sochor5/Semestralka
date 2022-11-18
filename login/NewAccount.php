@@ -1,4 +1,6 @@
 <?php
+include "DBuser.php";
+$auth = new DBuser();
 ?>
 <html lang="sk">
 <head>
@@ -21,17 +23,16 @@
 </div>
 <div class="columnsBlog">
     <div class="mainBlog">
+        <h1>Registrácia
+        </h1>
+        <h4>Je to rýchle a jednoduché.</h4>
         <form method="post">
-            <h1>Registrácia
-                </h1>
-            <h4>Je to rýchle a jednoduché.</h4>
-            <input class="loginSize" type="text" name="meno" placeholder="meno"><br>
-            <input class="loginSize" type="text" name="priezvisko" placeholder="priezvisko"><br>
-            <input class="loginSize" type="text" name="login" placeholder="Username"><br>
-            <input class="loginSize" type="text" name="Heslo" placeholder="Heslo"><br>
-            <a href="NewAccount.php">
-                <button class="loginSize" type="button" class="button2" >Registrácia</button>
-            </a>
+
+            <input class="loginSize" type="text" name="newMeno" placeholder="meno"><br>
+            <input class="loginSize" type="text" name="newPriezvisko" placeholder="priezvisko"><br>
+            <input class="loginSize" type="text" name="newlogin" placeholder="Username"><br>
+            <input class="loginSize" type="text" name="newHeslo" placeholder="Heslo"><br>
+            <input class="loginSize buttonLog" type="submit" value="Registrácia"><br>
         </form>
     </div>
 </div>

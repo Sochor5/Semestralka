@@ -32,7 +32,5 @@ $post = $db->loadOnePost($_GET['edit']);
                 </form>
             </div>
         </main>
-
     </div>
-
 </div>

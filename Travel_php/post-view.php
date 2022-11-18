@@ -12,12 +12,16 @@
             </div>
         </a><?php } ?>
 
-        <a  href="?New">
-            <div class="block newPost">
-                <h2> Novy post</h2>
-            </div>
+        <?php if ($_SESSION['logged']){ ?>
+            <a  href="?New">
+                <div class="block newPost">
+                    <h2> Novy post</h2>
+                </div>
 
-        </a>
+            </a>
+        <?php } ?>
+
+
 
     </div>
 

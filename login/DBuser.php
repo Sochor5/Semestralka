@@ -3,6 +3,7 @@ include "User.php";
 class DBuser
 {
     public $isLogged = false;
+
     private $pdo;
     public function __construct()
     {
@@ -17,12 +18,17 @@ class DBuser
             $this->logout();
         }
 
-        if (isset($_SESSION['logged'])){
-            $this->isLogged = true;
+        if (isset($_POST['newlogin'])){
+            if (isset($_POST['newHeslo'])){
+                if (isset($_POST['newMeno'])){
+                    if (isset($_POST['newPriezvisko'])){
+                        $this->createUser($_POST['newlogin'],$_POST['newHeslo'],$_POST['newMeno'],$_POST['newPriezvisko']);
+                    }
+                }
+            }
         }
-       }
 
-
+    }
 
     public  function login($name, $heslo){
         $this->pdo = new PDO('mysql:host=localhost;dbname=semestralka', "root","dtb456");
@@ -39,7 +45,14 @@ class DBuser
     }
     public function logout(){
         $this->isLogged = false;
-        unset($_SESSION['logged']);
+        $_SESSION['logged'] = false;
+        header("Location: ?");
+    }
+
+    public function createUser($login, $heslo,$meno,$priezvisko){
+        $this->pdo = new PDO('mysql:host=localhost;dbname=semestralka', "root","dtb456");
+        $stmt= $this->pdo->prepare("INSERT INTO uzivatel (login, heslo, meno,priezvisko) VALUES (?, ?, ?, ?)");
+        $stmt->execute([$login, $heslo,$meno,$priezvisko]);
         header("Location: ?");
     }
 }
