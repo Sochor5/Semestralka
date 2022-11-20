@@ -35,7 +35,7 @@ class DBuser
         $stm->execute([$name, $heslo]);
         /** @var User $meno */
         $meno = $stm->fetchAll(PDO::FETCH_CLASS)[0];
-        if ($meno->meno == $name && $meno->heslo == $heslo){
+        if ($meno->login == $name && $meno->heslo == $heslo){
             $this->isLogged = true;
             $_SESSION['logged'] = true;
         } else{

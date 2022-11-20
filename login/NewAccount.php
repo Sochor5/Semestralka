@@ -3,6 +3,7 @@ include "DBuser.php";
 
 $auth = new DBuser();
 ?>
+<!DOCTYPE html>
 <html lang="sk">
 <head>
     <meta charset="UTF-8">

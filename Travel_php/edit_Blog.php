@@ -8,7 +8,7 @@ $post = $db->loadOnePost($_GET['edit']);
     <div class="columnsBlog">
         <main class="mainBlog">
             <div>
-                <form " method="post">
+                <form method="post">
                 <textarea class="nadpis" name="nazov">
                   <?php
                   echo $post->nazov;

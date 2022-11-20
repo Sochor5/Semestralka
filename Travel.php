@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html>
 <?php
 session_start();
 include "Travel_php/DBpost.php";
@@ -36,7 +38,7 @@ if ($_SESSION['logged']){
     }
  }
 ?>
-<html>
+
 <head>
     <meta charset="UTF-8">
     <title>Travel</title>
@@ -63,12 +65,12 @@ if ($_SESSION['logged']){
         include "Travel_php/Blog.php";
     }else {
         if (isset($_GET['New'])) {
-            include "Travel_php/new-view.php";
+            include "Travel_php/new_Blog.php";
         } else {
             if (isset($_GET['edit'])){
-                include "Travel_php/edit_view.php";
+                include "Travel_php/edit_Blog.php";
             } else {
-                include "Travel_php/post-view.php";
+                include "Travel_php/post_Blog.php";
             }
         }
     } ?>
