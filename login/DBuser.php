@@ -10,7 +10,6 @@ class DBuser
 
         if (isset($_POST['login'])){
             if (isset($_POST['Heslo'])){
-
                 $this->login($_POST['login'],$_POST['Heslo']);
             }
         }
@@ -18,11 +17,11 @@ class DBuser
             $this->logout();
         }
 
-        if (isset($_POST['newlogin'])){
+        if (isset($_POST['email'])){
             if (isset($_POST['newHeslo'])){
                 if (isset($_POST['newMeno'])){
                     if (isset($_POST['newPriezvisko'])){
-                        $this->createUser($_POST['newlogin'],$_POST['newHeslo'],$_POST['newMeno'],$_POST['newPriezvisko']);
+                        $this->createUser($_POST['email'],$_POST['newHeslo'],$_POST['newMeno'],$_POST['newPriezvisko']);
                     }
                 }
             }

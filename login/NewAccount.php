@@ -26,13 +26,13 @@ $auth = new DBuser();
         <h1>Registrácia
         </h1>
         <h4>Je to rýchle a jednoduché.</h4>
-        <form method="post">
-
-            <input class="loginSize" type="text" name="newMeno" placeholder="meno"><br>
+        <form method="post" onsubmit="return validateForm()">
+            <input class="loginSize" type="text" name="newMeno" placeholder="meno" ><br>
             <input class="loginSize" type="text" name="newPriezvisko" placeholder="priezvisko"><br>
-            <input class="loginSize" type="text" name="newlogin" placeholder="Username"><br>
+            <input class="loginSize" type="text" name="email" placeholder="email" id="email" ><br>
             <input class="loginSize" type="text" name="newHeslo" placeholder="Heslo"><br>
-            <input class="loginSize buttonLog" type="submit" value="Registrácia"><br>
+            <input class="loginSize buttonLog" type="submit"  value="Registrácia"><br>
+
         </form>
     </div>
 </div>
@@ -44,6 +44,8 @@ $auth = new DBuser();
     <a href="https://www.instagram.com/palasssochi/" class="fa fa-instagram"></a>
     </footer>
 </div>
+<script>
 
+</script>
 </body>
 </html>
