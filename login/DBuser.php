@@ -17,6 +17,11 @@ class DBuser
             $this->logout();
         }
 
+        if (isset($_SESSION['logged']) == null){
+            $this->isLogged = false;
+            $_SESSION['logged'] = false;
+        }
+
         if (isset($_POST['email'])){
             if (isset($_POST['newHeslo'])){
                 if (isset($_POST['newMeno'])){
