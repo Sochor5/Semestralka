@@ -59,4 +59,10 @@ class DBuser
         $stmt->execute([$login, $heslo,$meno,$priezvisko]);
         header("Location: ?");
     }
+
+    public function getALLAutor(){
+        $this->pdo = new PDO('mysql:host=localhost;dbname=semestralka', "root","dtb456");
+        $stm = $this->pdo->query("SELECT meno, priezvisko FROM uzivatel");
+        return $stm->fetchAll(PDO::FETCH_CLASS, User::class);
+    }
 }

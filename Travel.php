@@ -49,16 +49,7 @@ if ($_SESSION['logged']){
 
 <body>
 
-<div class="header" >
-    <a href="index.php" class="aktual" >HOME</a>
-    <a href="Travel.php">TRAVEL</a>
-    <?php if ($_SESSION['logged']){ ?>
-        <a class="rightHeader" href="login/login.php?odhlas">ODHLASIT</a>
-    <?php }  else {?>
-        <a class="rightHeader" href="login/login.php">LOGIN</a>
-    <?php  } ?>
-    <a  href="#home" class="fa fa-search"></a>
-</div>
+<?php  include "headerALL.php"?>
 <div class="body">
     <?php
     if (isset($_GET['blog'])){
@@ -75,11 +66,6 @@ if ($_SESSION['logged']){
         }
     } ?>
 </div>
-<div class="footer">
-    <footer class="footer padding">© 2021-2022 Žilinská univerzita v Žiline, Pavel Sochor.<br>
-    <a href="https://www.facebook.com/palo.sochor/" class="fa fa-facebook"></a>
-    <a href="https://www.instagram.com/palasssochi/" class="fa fa-instagram"></a>
-    </footer>
-</div>
+<?php  include "footerALL.php"?>
 </body>
 </html>
