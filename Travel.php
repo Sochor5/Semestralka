@@ -5,6 +5,8 @@ session_start();
 include "Travel_php/DBpost.php";
 include "Travel_php/Post.php";
 $db = new DB();
+include "login/DBuser.php";
+$auth = new DBuser();
 
 if ($_SESSION['logged']){
     if (isset($_GET['edit']) && isset($_POST['id'])){
@@ -50,23 +52,23 @@ if ($_SESSION['logged']){
 
 <body>
 
-<?php  include "headerALL.php"?>
+<?php include "head_foot/headerALL.php" ?>
 <div class="body">
     <?php
     if (isset($_GET['blog'])){
-        include "Travel_php/Blog.php";
+        include "Travel_php/view_one_Post.php";
     }else {
         if (isset($_GET['New'])) {
-            include "Travel_php/new_Blog.php";
+            include "Travel_php/new_Post.php";
         } else {
             if (isset($_GET['edit'])){
-                include "Travel_php/edit_Blog.php";
+                include "Travel_php/edit_Post.php";
             } else {
-                include "Travel_php/post_Blog.php";
+                include "Travel_php/view_Page_Posts.php";
             }
         }
     } ?>
 </div>
-<?php  include "footerALL.php"?>
+<?php include "head_foot/footerALL.php" ?>
 </body>
 </html>

@@ -40,9 +40,7 @@ class DBuser
         $stm->execute([$name, $heslo]);
         /** @var User $meno */
         $meno = $stm->fetchAll(PDO::FETCH_CLASS)[0];
-
         if ($meno->login == $name && $meno->heslo == $heslo){
-
             $this->isLogged = true;
             $_SESSION['logged'] = true;
             $_SESSION['id_uzivatela'] = $meno->id_uzivatela;
@@ -50,6 +48,7 @@ class DBuser
             $this->logout();
         }
     }
+
     public function logout(){
         $this->isLogged = false;
         $_SESSION['logged'] = false;
@@ -66,13 +65,7 @@ class DBuser
 
     public function getALLAutor(){
         $this->pdo = new PDO('mysql:host=localhost;dbname=semestralka', "root","dtb456");
-        $stm = $this->pdo->query("SELECT meno, priezvisko FROM uzivatel");
+        $stm = $this->pdo->query("SELECT id_uzivatela, meno, priezvisko FROM uzivatel");
         return $stm->fetchAll(PDO::FETCH_CLASS, User::class);
-    }
-
-    public function getIDUzivatela(){
-        if (isset($_SESSION['logged']) == true){
-
-        }
     }
 }

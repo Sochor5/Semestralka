@@ -13,7 +13,7 @@ $auth = new DBuser();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-    <?php  include "headerALL.php"?>
+    <?php include "head_foot/headerALL.php" ?>
 <div class="body">
     <div class="columns">
         <main class="main">
@@ -75,6 +75,6 @@ $auth = new DBuser();
         </div>
     </div>
 </div>
-    <?php  include "footerALL.php"?>
+    <?php include "head_foot/footerALL.php" ?>
 </body>
 </html>

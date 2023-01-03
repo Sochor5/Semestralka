@@ -14,7 +14,7 @@ $auth = new DBuser();
 </head>
 <body>
 
-<?php  include "headerALL.php"?>
+<?php include "head_foot/headerALL.php" ?>
 <div class="columnsBlog">
     <div class="mainBlog">
         <h1>Registrácia
@@ -32,7 +32,7 @@ $auth = new DBuser();
 </div>
 
 
-<?php  include "footerALL.php"?>
+<?php include "head_foot/footerALL.php" ?>
 <script>
     function validateForm() {
         var emailRegex = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;

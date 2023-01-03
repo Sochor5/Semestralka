@@ -1,5 +1,5 @@
 <?php
-
+/** @var DBuser $auth */
 ?>
 <div class="columns">
     <div class="main">
@@ -9,7 +9,14 @@
             <div class="block">
                 <h2> <?php echo $post->nazov  ?></h2>
                 <p><?php echo $post->strucnyText  ?> </p>
+                <?php
+                foreach ($auth->getALLAutor() as $autor){
+                    if ($autor->id_uzivatela == $post->id_pouzivatela__fk && $post->id_pouzivatela__fk != null) {?>
+                        <p>Autor: <?php echo $autor->meno ?> <?php echo $autor->priezvisko  ?> </p>
+                        <p> </p>
+                    <?php } } ?>
             </div>
+
         </a><?php } ?>
 
         <?php if ($_SESSION['logged']){ ?>

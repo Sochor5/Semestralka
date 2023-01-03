@@ -15,7 +15,7 @@ $auth = new DBuser();
 <body>
 
 
-<?php  include "headerALL.php"?>
+<?php include "head_foot/headerALL.php" ?>
 <div class="columnsBlog">
     <div class="mainBlog login">
         <form method="post">
@@ -37,7 +37,7 @@ $auth = new DBuser();
 </div>
 
 
-<?php  include "footerALL.php"?>
+<?php include "head_foot/footerALL.php" ?>
 
 </body>
 </html>
