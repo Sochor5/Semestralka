@@ -26,6 +26,7 @@ if ($_SESSION['logged']){
                 $newPost->text = $_POST['text'];
                 $newPost->nazov = $_POST['nazov'];
                 $newPost->strucnyText = $_POST['strucnyText'];
+                $newPost->id_uzivatela = $_SESSION['id_uzivatela'];
                 if (isset($_FILES['img']) && $_FILES['img']['error'] == UPLOAD_ERR_OK) {
                     $newName = "img" . DIRECTORY_SEPARATOR . time() . "_" . $_FILES["img"]["name"];
                     if (move_uploaded_file($_FILES["img"]["tmp_name"], $newName)) {

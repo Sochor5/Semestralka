@@ -3,7 +3,6 @@ include "User.php";
 class DBuser
 {
     public $isLogged = false;
-
     private $pdo;
     public function __construct()
     {
@@ -19,6 +18,7 @@ class DBuser
 
         if (isset($_SESSION['logged']) == null){
             $this->isLogged = false;
+            $_SESSION['id_uzivatela'] = true;
             $_SESSION['logged'] = false;
         }
 
@@ -40,9 +40,12 @@ class DBuser
         $stm->execute([$name, $heslo]);
         /** @var User $meno */
         $meno = $stm->fetchAll(PDO::FETCH_CLASS)[0];
+
         if ($meno->login == $name && $meno->heslo == $heslo){
+
             $this->isLogged = true;
             $_SESSION['logged'] = true;
+            $_SESSION['id_uzivatela'] = $meno->id_uzivatela;
         } else{
             $this->logout();
         }
@@ -50,6 +53,7 @@ class DBuser
     public function logout(){
         $this->isLogged = false;
         $_SESSION['logged'] = false;
+        $_SESSION['id_uzivatela'] = -1;
         header("Location: ?");
     }
 
@@ -64,5 +68,11 @@ class DBuser
         $this->pdo = new PDO('mysql:host=localhost;dbname=semestralka', "root","dtb456");
         $stm = $this->pdo->query("SELECT meno, priezvisko FROM uzivatel");
         return $stm->fetchAll(PDO::FETCH_CLASS, User::class);
+    }
+
+    public function getIDUzivatela(){
+        if (isset($_SESSION['logged']) == true){
+
+        }
     }
 }

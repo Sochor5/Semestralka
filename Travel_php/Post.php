@@ -7,5 +7,5 @@ class Post
     public $strucnyText;
     public $text;
     public $file;
-
+    public $id_uzivatela;
 }

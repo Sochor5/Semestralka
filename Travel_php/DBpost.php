@@ -19,9 +19,9 @@ class DB
 
     public function storePost(Post $post){
         if (!$post->idPost) {
-            $sql = "INSERT INTO post (nazov,strucnyText,text, file) VALUES (?, ?, ?, ?)";
+            $sql = "INSERT INTO post (nazov,strucnyText,text, file, id_pouzivatela__fk) VALUES (?, ?, ?, ?,?)";
             $stmt = $this->pdo->prepare($sql);
-            $stmt->execute([$post->nazov, $post->strucnyText, $post->text, $post->file]);
+            $stmt->execute([$post->nazov, $post->strucnyText, $post->text, $post->file, $post->id_uzivatela]);
         }else{
             $sql = "UPDATE post SET nazov = ?, strucnyText = ?, text = ?   where idPost = ?";
             $stmt= $this->pdo->prepare($sql);
