@@ -35,18 +35,23 @@ class DBuser
     }
 
     public  function login($name, $heslo){
-        $this->pdo = new PDO('mysql:host=localhost;dbname=semestralka', "root","dtb456");
-        $stm = $this->pdo->prepare("SELECT * FROM uzivatel WHERE login= ? and heslo= ?");
-        $stm->execute([$name, $heslo]);
-        /** @var User $meno */
-        $meno = $stm->fetchAll(PDO::FETCH_CLASS)[0];
-        if ($meno->login == $name && $meno->heslo == $heslo){
-            $this->isLogged = true;
-            $_SESSION['logged'] = true;
-            $_SESSION['id_uzivatela'] = $meno->id_uzivatela;
+        if ($name != null && $heslo != null) {
+            $this->pdo = new PDO('mysql:host=localhost;dbname=semestralka', "root","dtb456");
+            $stm = $this->pdo->prepare("SELECT * FROM uzivatel WHERE login= ? and heslo= ?");
+            $stm->execute([$name, $heslo]);
+            /** @var User $meno */
+            $meno = $stm->fetchAll(PDO::FETCH_CLASS)[0];
+            if ($meno->login == $name && $meno->heslo == $heslo){
+                $this->isLogged = true;
+                $_SESSION['logged'] = true;
+                $_SESSION['id_uzivatela'] = $meno->id_uzivatela;
+            } else{
+                $this->logout();
+            }
         } else{
             $this->logout();
         }
+
     }
 
     public function logout(){

@@ -7,6 +7,10 @@ class DB
     public function __construct()
     {
         $this->pdo = new PDO('mysql:host=localhost;dbname=semestralka',"root", "dtb456");
+        if (isset($_GET['like'])){
+                $this->storeLike();
+        }
+
     }
 
     /**
@@ -49,5 +53,37 @@ class DB
         $stmt= $this->pdo->prepare($sql);
         $stmt->execute([$id]);
         header("Location: ?");
+    }
+
+    ////////////---------------////////////
+    ////////////LIKE ////////////
+    ////////////---------------////////////
+    public function GetLikes($id){ //////nejde
+        $stm = $this->pdo->prepare("SELECT COUNT(*) FROM likes WHERE id_postu = ?");
+        $stm->execute([$id]);
+        return  $stm->fetchColumn();
+    }
+
+    public function storeLike(){
+        if ($_SESSION['id_uzivatela'] != -1){
+            $id_aktualneho_postu = $_GET['like'];
+            $id_aktualneho_uzivatela = $_SESSION['id_uzivatela'];
+            $stm = $this->pdo->prepare("SELECT * FROM likes WHERE id_postu= ? and id_uzivatela= ?");
+            $stm->execute([$id_aktualneho_postu,$id_aktualneho_uzivatela]);
+            /** @var Like $meno */
+            $meno = $stm->fetchAll();
+            if ($meno != null){
+
+
+                $sql = "DELETE FROM likes WHERE id_postu = ?";
+                $stmt= $this->pdo->prepare($sql);
+                $stmt->execute([$id_aktualneho_postu]);
+                header("Location: ?");
+            } else {
+                $sql = "INSERT INTO likes (id_postu,id_uzivatela) VALUES (?, ?)";
+                $stmt = $this->pdo->prepare($sql);
+                $stmt->execute([$id_aktualneho_postu,$id_aktualneho_uzivatela ]);
+            }
+        }
     }
 }

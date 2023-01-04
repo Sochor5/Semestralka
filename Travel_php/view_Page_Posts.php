@@ -15,6 +15,11 @@
                         <p>Autor: <?php echo $autor->meno ?> <?php echo $autor->priezvisko  ?> </p>
                         <p> </p>
                     <?php } } ?>
+
+
+                Tento článok sa páči
+                <?php echo $db->GetLikes($post->idPost)  ?>
+                čitateľom
             </div>
 
         </a><?php } ?>

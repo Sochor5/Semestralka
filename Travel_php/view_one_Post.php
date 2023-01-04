@@ -14,17 +14,12 @@ $post = $db->loadOnePost($_GET['blog']);
             <?php if ($post->file) {?>
                 <img src="<?php  echo  $post->file ?>" class="card-img-top" alt="..."><br>
             <?php } ?>
-
-
-
             <?php
             foreach ($auth->getALLAutor() as $autor){
                 if ($autor->id_uzivatela == $post->id_pouzivatela__fk && $post->id_pouzivatela__fk != null) {?>
                 <p> <?php echo $autor->meno ?> <?php echo $autor->priezvisko  ?> </p>
                 <p> </p>
             <?php } } ?>
-
-
             <?php if ($_SESSION['logged']){ ?>
                 <a href="?edit=<?php echo $post->idPost ?>" >
                     <br>
@@ -33,8 +28,21 @@ $post = $db->loadOnePost($_GET['blog']);
 
                 <a href="?delete=<?php echo $post->idPost ?>" >
                     Vymaz
+                </a><br>
+
+                <a href="?like=<?php echo $post->idPost ?>" >
+                    <input class="loginSize buttonLog"  value="Tento článok sa mi páči"><br>
                 </a>
             <?php }  ?>
+
+
+
+
+
+
+
+
+
         </main>
     </div>
 </div>
