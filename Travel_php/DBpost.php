@@ -7,10 +7,22 @@ class DB
     public function __construct()
     {
         $this->pdo = new PDO('mysql:host=localhost;dbname=semestralka',"root", "dtb456");
-        if (isset($_GET['like'])){
+        if (isset($_POST['like'])){
                 $this->storeLike();
         }
 
+        if (isset($_GET['textKoment'])){
+            if (isset($_GET['newKoment'])){
+                $this->newKoment();
+            }
+        }
+        if (isset($_GET['deleteKoment'])){
+            $this->deleteKomentar();
+        }
+
+        if (isset($_POST['textkomentu'])){
+            $this->newKoment($_POST['textkomentu']);
+        }
     }
 
     /**
@@ -58,32 +70,59 @@ class DB
     ////////////---------------////////////
     ////////////LIKE ////////////
     ////////////---------------////////////
-    public function GetLikes($id){ //////nejde
-        $stm = $this->pdo->prepare("SELECT COUNT(*) FROM likes WHERE id_postu = ?");
+    public function GetLikes($id,$co){
+        if ($co == 1) {
+            $stm = $this->pdo->prepare("SELECT COUNT(*) FROM likes WHERE id_postu = ?");
+        }else {
+            $stm = $this->pdo->prepare("SELECT COUNT(*) FROM komentar WHERE id_postu = ?");
+        }
+
         $stm->execute([$id]);
         return  $stm->fetchColumn();
     }
 
     public function storeLike(){
         if ($_SESSION['id_uzivatela'] != -1){
-            $id_aktualneho_postu = $_GET['like'];
+            $id_aktualneho_postu = $_GET['blog'];
             $id_aktualneho_uzivatela = $_SESSION['id_uzivatela'];
             $stm = $this->pdo->prepare("SELECT * FROM likes WHERE id_postu= ? and id_uzivatela= ?");
             $stm->execute([$id_aktualneho_postu,$id_aktualneho_uzivatela]);
             /** @var Like $meno */
             $meno = $stm->fetchAll();
             if ($meno != null){
-
-
                 $sql = "DELETE FROM likes WHERE id_postu = ?";
                 $stmt= $this->pdo->prepare($sql);
                 $stmt->execute([$id_aktualneho_postu]);
-                header("Location: ?");
+
             } else {
                 $sql = "INSERT INTO likes (id_postu,id_uzivatela) VALUES (?, ?)";
                 $stmt = $this->pdo->prepare($sql);
                 $stmt->execute([$id_aktualneho_postu,$id_aktualneho_uzivatela ]);
             }
         }
+    }
+
+    ////////////---------------////////////
+    ////////////KOMENTARE ////////////
+    ////////////---------------////////////
+
+
+    public function getALLKomentFromPost($id){
+        $stm = $this->pdo->prepare("SELECT * FROM komentar WHERE id_postu= ?");
+        $stm->execute([$id]);
+        return  $stm->fetchAll(PDO::FETCH_CLASS, Komentar::class);
+    }
+
+    public function newKoment($text){
+        $sql = "INSERT INTO komentar (text_komentu,id_postu,id_uzivatela) VALUES (?, ?,?)";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([$text,$_GET['blog'],$_SESSION['id_uzivatela'] ]);
+    }
+
+    public function deleteKomentar(){
+        $sql = "DELETE FROM komentar WHERE id_komentu = ?";
+        $stmt= $this->pdo->prepare($sql);
+        $stmt->execute([$_GET['deleteKoment']]);
+        header("Location: ?");
     }
 }

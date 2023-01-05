@@ -4,6 +4,7 @@
 session_start();
 include "Travel_php/DBpost.php";
 include "Travel_php/Post.php";
+include "Travel_php/Komentar.php";
 $db = new DB();
 include "login/DBuser.php";
 $auth = new DBuser();

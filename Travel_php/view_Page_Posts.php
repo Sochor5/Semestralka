@@ -18,7 +18,7 @@
 
 
                 Tento článok sa páči
-                <?php echo $db->GetLikes($post->idPost)  ?>
+                <?php echo $db->GetLikes($post->idPost,1)  ?>
                 čitateľom
             </div>
 
