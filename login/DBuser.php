@@ -14,6 +14,8 @@ class DBuser
         }
         if (isset($_GET['odhlas'])){
             $this->logout();
+            header("Location: ?");
+            die();
         }
 
         if (isset($_SESSION['logged']) == null){
@@ -45,6 +47,7 @@ class DBuser
                 $this->isLogged = true;
                 $_SESSION['logged'] = true;
                 $_SESSION['id_uzivatela'] = $meno->id_uzivatela;
+                header("Location: ../index.php");
             } else{
                 $this->logout();
             }
@@ -58,14 +61,13 @@ class DBuser
         $this->isLogged = false;
         $_SESSION['logged'] = false;
         $_SESSION['id_uzivatela'] = -1;
-        header("Location: ?");
     }
 
     public function createUser($login, $heslo,$meno,$priezvisko){
         $this->pdo = new PDO('mysql:host=localhost;dbname=semestralka', "root","dtb456");
         $stmt= $this->pdo->prepare("INSERT INTO uzivatel (login, heslo, meno,priezvisko) VALUES (?, ?, ?, ?)");
         $stmt->execute([$login, $heslo,$meno,$priezvisko]);
-        header("Location: ?");
+        header("Location: ../index.php");
     }
 
     public function getALLAutor(){

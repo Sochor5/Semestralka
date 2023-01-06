@@ -19,7 +19,7 @@ $post = $db->loadOnePost($_GET['blog']);
             <?php
             foreach ($auth->getALLAutor() as $autor){
                 if ($autor->id_uzivatela == $post->id_pouzivatela__fk && $post->id_pouzivatela__fk != null) {?>
-                <p> <?php echo $autor->meno ?> <?php echo $autor->priezvisko  ?> </p>
+                <p> Autor článku je  <?php echo $autor->meno ?> <?php echo $autor->priezvisko  ?> </p>
                 <p> </p>
             <?php } } ?>
             <?php if ($_SESSION['logged']){
@@ -47,15 +47,22 @@ $post = $db->loadOnePost($_GET['blog']);
             <h3> Diskusia:
                 <?php echo $db->GetLikes($post->idPost,2 )  ?> príspevky</h3>
             <?php
+            foreach ($db->getALLKomentFromPost($_GET['blog']) as $koment){
+                if (isset($_GET['EditKoment'])){
+                    include "Travel_php/view_one_Post.php";
+                    ?>  <p> ahoj</p> <?php
+                } else {
 
 
 
+                ?>
 
-            foreach ($db->getALLKomentFromPost($_GET['blog']) as $koment){?>
+
+
                 <?php
                 foreach ($auth->getALLAutor() as $autor){
                     if ($autor->id_uzivatela == $koment->id_uzivatela && $koment->id_uzivatela != null) {?>
-                        <p> <?php echo $autor->meno ?> <?php echo $autor->priezvisko  ?> </p>
+                        <p><?php echo $autor->meno ?> <?php echo $autor->priezvisko  ?> </p>
                         <p> </p>
                     <?php } } ?>
                     <p><?php echo $koment->text_komentu ?>  </p>
@@ -64,11 +71,16 @@ $post = $db->loadOnePost($_GET['blog']);
 
                 ?>
 
+                <a href="?EditKoment=<?php echo $koment->id_komentu ?>" >
+                    edit komentar
+                </a><br>
+
+
                 <a href="?deleteKoment=<?php echo $koment->id_komentu ?>" >
                     Vymaz komentar
                 </a><br>
 
-                <?php }} } ?>
+                <?php } }} } ?>
             <?php if ($_SESSION['logged']){ ?>
             <form method="post">
                 <input class="loginSize" type="text" name="textkomentu" placeholder="Napíšte komentár…">

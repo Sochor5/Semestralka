@@ -65,8 +65,14 @@ if ($_SESSION['logged']){
             if (isset($_GET['edit'])){
                 include "Travel_php/edit_Post.php";
             } else {
-                include "Travel_php/view_Page_Posts.php";
+                if (isset($_GET['EditKoment'])){
+                    include "Travel_php/edit_Komentar.php";
+                } else {
+                    include "Travel_php/view_Page_Posts.php";
+                }
             }
+
+
         }
     } ?>
 </div>

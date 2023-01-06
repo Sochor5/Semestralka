@@ -20,6 +20,12 @@ class DB
             $this->deleteKomentar();
         }
 
+        if (isset($_POST['id_komentu'])){
+            if (isset($_POST['editTextTomentu'])){
+                $this->editKoment();
+            }
+        }
+
         if (isset($_POST['textkomentu'])){
             $this->newKoment($_POST['textkomentu']);
         }
@@ -112,7 +118,11 @@ class DB
         $stm->execute([$id]);
         return  $stm->fetchAll(PDO::FETCH_CLASS, Komentar::class);
     }
-
+    public function getKoment($id){
+        $stm = $this->pdo->prepare("SELECT * FROM komentar WHERE id_komentu= ?");
+        $stm->execute([$id]);
+        return  $stm->fetchAll(PDO::FETCH_CLASS, Komentar::class)[0];
+    }
     public function newKoment($text){
         $sql = "INSERT INTO komentar (text_komentu,id_postu,id_uzivatela) VALUES (?, ?,?)";
         $stmt = $this->pdo->prepare($sql);
@@ -123,6 +133,13 @@ class DB
         $sql = "DELETE FROM komentar WHERE id_komentu = ?";
         $stmt= $this->pdo->prepare($sql);
         $stmt->execute([$_GET['deleteKoment']]);
+    }
+
+    public function editKoment(){
+        $sql = "UPDATE komentar SET text_komentu = ? where id_komentu = ?";
+        $stmt= $this->pdo->prepare($sql);
+        $stmt->execute([$_POST['editTextTomentu'],$_POST['id_komentu']]);
         header("Location: ?");
+
     }
 }
