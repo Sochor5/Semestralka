@@ -1,7 +1,6 @@
 <?php
 /** @var Post $post */
 /** @var DB $db */
-/** @var DBuser $auth */
 /** @var Komentar $koment */
 
 
@@ -17,7 +16,7 @@ $post = $db->loadOnePost($_GET['blog']);
                 <img src="<?php  echo  $post->file ?>" class="card-img-top" alt="..."><br>
             <?php } ?>
             <?php
-            foreach ($auth->getALLAutor() as $autor){
+            foreach ($db->getALLAutor() as $autor){
                 if ($autor->id_uzivatela == $post->id_pouzivatela__fk && $post->id_pouzivatela__fk != null) {?>
                 <p> Autor článku je  <?php echo $autor->meno ?> <?php echo $autor->priezvisko  ?> </p>
                 <p> </p>
@@ -35,7 +34,7 @@ $post = $db->loadOnePost($_GET['blog']);
                 <a href="?delete=<?php echo $post->idPost ?>" >
                     Vymaz
                 </a><br>
-
+            <?php }  ?>
 
                     <form method="post">
                     <input class="loginSize buttonLog"  type="submit" name="like" value="Tento článok sa mi páči"><br>
@@ -43,13 +42,13 @@ $post = $db->loadOnePost($_GET['blog']);
                     </form>
 
 
-            <?php } } ?>
+            <?php }  ?>
             <h3> Diskusia:
                 <?php echo $db->GetLikes($post->idPost,2 )  ?> príspevky</h3>
             <?php
             foreach ($db->getALLKomentFromPost($_GET['blog']) as $koment){
                 if (isset($_GET['EditKoment'])){
-                    include "Travel_php/view_one_Post.php";
+                    include "Post_php/view_one_Post.php";
                     ?>  <p> ahoj</p> <?php
                 } else {
 
@@ -60,7 +59,7 @@ $post = $db->loadOnePost($_GET['blog']);
 
 
                 <?php
-                foreach ($auth->getALLAutor() as $autor){
+                foreach ($db->getALLAutor() as $autor){
                     if ($autor->id_uzivatela == $koment->id_uzivatela && $koment->id_uzivatela != null) {?>
                         <p><?php echo $autor->meno ?> <?php echo $autor->priezvisko  ?> </p>
                         <p> </p>

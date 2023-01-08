@@ -6,7 +6,7 @@
  </head>
 <div class="header" >
     <a href="../index.php" class="aktual" >HOME</a>
-    <a href="../Travel.php">TRAVEL</a>
+    <a href="../Post.php">POST</a>
     <?php if ($_SESSION['logged']){ ?>
         <a class="rightHeader" href="../login.php?odhlas">ODHLASIT</a>
     <?php }  else {?>

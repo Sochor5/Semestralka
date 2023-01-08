@@ -1,6 +1,6 @@
 <?php
 
-class user
+class UserUdaje
 {
     public  $id_uzivatela;
     public $login;

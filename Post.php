@@ -2,12 +2,10 @@
 <html>
 <?php
 session_start();
-include "Travel_php/DBpost.php";
-include "Travel_php/Post.php";
-include "Travel_php/Komentar.php";
+include "Post_php/DBpost.php";
+include "phpClass//Post.php";
+include "phpClass//Komentar.php";
 $db = new DB();
-include "login/DBuser.php";
-$auth = new DBuser();
 
 if ($_SESSION['logged']){
     if (isset($_GET['edit']) && isset($_POST['id'])){
@@ -57,18 +55,18 @@ if ($_SESSION['logged']){
 <div class="body">
     <?php
     if (isset($_GET['blog'])){
-        include "Travel_php/view_one_Post.php";
+        include "Post_php/view_one_Post.php";
     }else {
         if (isset($_GET['New'])) {
-            include "Travel_php/new_Post.php";
+            include "Post_php/new_Post.php";
         } else {
             if (isset($_GET['edit'])){
-                include "Travel_php/edit_Post.php";
+                include "Post_php/edit_Post.php";
             } else {
                 if (isset($_GET['EditKoment'])){
-                    include "Travel_php/edit_Komentar.php";
+                    include "Post_php/edit_Komentar.php";
                 } else {
-                    include "Travel_php/view_Page_Posts.php";
+                    include "Post_php/view_Page_Posts.php";
                 }
             }
 

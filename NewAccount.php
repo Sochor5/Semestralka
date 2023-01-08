@@ -1,7 +1,6 @@
 <?php
-include "login/DBuser.php";
-
-$auth = new DBuser();
+include "Post_php/DBpost.php";
+$auth = new DB();
 ?>
 <!DOCTYPE html>
 <html lang="sk">
