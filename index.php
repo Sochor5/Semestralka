@@ -1,7 +1,8 @@
 <?php
 session_start();
 include "Post_php/DBpost.php";
-$auth = new DB();
+include "phpClass/Post.php";
+$db = new DB();
 ?>
 <!DOCTYPE html>
 <html lang="sk">
@@ -67,11 +68,18 @@ $auth = new DB();
         <div class="aboutme">
             <h3> ABOUT ME</h3>
             <img alt="" src="1634331496115.jpg">
-            <?php
-            foreach ($auth->getALLAutor() as $autor){ ?>
-                <p> <?php echo $autor->meno ?> <?php echo $autor->priezvisko  ?> </p>
-                <p> </p>
-            <?php } ?>
+            <?php $pocetAutor = 0;
+            foreach ($db->getALLAutor() as $autor){
+                $pocet = 0;
+                foreach ($db->getALLPosts() as $post){
+                    if ($post->idPost != 0){
+                        if ($pocet < 1) {
+                            if ($post->id_pouzivatela__fk == $autor->id_uzivatela) {
+                                $pocet++;
+                                if ($pocetAutor < 5) {
+                                    $pocetAutor++; ?>
+                                    <a href="http://localhost/Post.php?autorID=<?php echo $autor->id_uzivatela ?>" ><p> <?php echo $autor->meno ?> <?php echo $autor->priezvisko  ?> </p></a>
+                                <?php }}}}}}?>
         </div>
     </div>
 </div>

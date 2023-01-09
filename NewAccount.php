@@ -19,6 +19,10 @@ $auth = new DB();
         <h1>Registrácia
         </h1>
         <h4>Je to rýchle a jednoduché.</h4>
+        <?php
+        if (isset($_SESSION['Existuje'])){
+        ?> Užívateľ s daným emailom už existuje. Zadajte iný email   <?php
+        }?>
         <form method="post" onsubmit="return validateForm()">
             <input class="loginSize" type="text" name="newMeno" placeholder="meno" ><br>
             <input class="loginSize" type="text" name="newPriezvisko" placeholder="priezvisko"><br>

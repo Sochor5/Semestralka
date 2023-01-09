@@ -34,12 +34,26 @@ $post = $db->loadOnePost($_GET['blog']);
                 <a href="?delete=<?php echo $post->idPost ?>" >
                     Vymaz
                 </a><br>
-            <?php }  ?>
+            <?php }
 
+
+
+
+                if ($db->getLikePostUser($post->idPost,$_SESSION['id_uzivatela'])) { ?>
                     <form method="post">
-                    <input class="loginSize buttonLog"  type="submit" name="like" value="Tento článok sa mi páči"><br>
+                        <input class="loginSize buttonLogRed"  type="submit" name="like" value="Tento článok sa mi už nepáči"><br>
 
                     </form>
+               <?php } else { ?>
+                    <form method="post">
+                        <input class="loginSize buttonLog"  type="submit" name="like" value="Tento článok sa mi páči"><br>
+
+                    </form>
+            <?php    }
+
+            ?>
+
+
 
 
             <?php }  ?>

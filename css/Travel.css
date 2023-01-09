@@ -112,6 +112,11 @@ input, textarea {
     text-align: center;
 }
 
+.buttonLogRed{
+    background-color: #f67b00;
+    text-align: center;
+}
+
 .nadpis{
     width: 30%;
 

@@ -1,5 +1,6 @@
 <?php
 include "phpClass/UserUdaje.php";
+include "phpClass/Like.php";
 class DB
 {
         private $pdo;
@@ -115,10 +116,16 @@ class DB
         }else {
             $stm = $this->pdo->prepare("SELECT COUNT(*) FROM komentar WHERE id_postu = ?");
         }
-
         $stm->execute([$id]);
         return  $stm->fetchColumn();
     }
+
+    public function getLikePostUser($id_postLike, $id_UserLike){
+        $stm = $this->pdo->prepare("SELECT * FROM likes WHERE id_postu= ? and id_uzivatela= ?");
+        $stm->execute([$id_postLike,$id_UserLike]);
+        return  $stm->fetchAll(PDO::FETCH_CLASS, Like::class);
+    }
+
 
     public function storeLike(){
         if ($_SESSION['id_uzivatela'] != -1){
@@ -181,11 +188,11 @@ class DB
     ////////////---------------////////////
     public  function login($name, $heslo){
         if ($name != null && $heslo != null) {
-            $stm = $this->pdo->prepare("SELECT * FROM uzivatel WHERE login= ? and heslo= ?");
-            $stm->execute([$name, $heslo]);
+            $stm = $this->pdo->prepare("SELECT * FROM uzivatel WHERE login= ?");
+            $stm->execute([$name]);
             /** @var UserUdaje $meno */
             $meno = $stm->fetchAll(PDO::FETCH_CLASS)[0];
-            if ($meno->login == $name && $meno->heslo == $heslo){
+            if ($meno->login == $name && password_verify($heslo, $meno->heslo)){
                 $this->isLogged = true;
                 $_SESSION['logged'] = true;
                 $_SESSION['id_uzivatela'] = $meno->id_uzivatela;
@@ -205,9 +212,25 @@ class DB
     }
 
     public function createUser($login, $heslo,$meno,$priezvisko){
-        $stmt= $this->pdo->prepare("INSERT INTO uzivatel (login, heslo, meno,priezvisko) VALUES (?, ?, ?, ?)");
-        $stmt->execute([$login, $heslo,$meno,$priezvisko]);
-        header("Location: ../index.php");
+        $stm = $this->pdo->query("SELECT login FROM uzivatel");
+        /** @var UserUdaje $meno */
+        $userDB = $stm->fetchAll(PDO::FETCH_CLASS, UserUdaje::class);
+        $pomoc = 0;
+        foreach ($userDB as $autor){
+            if ($autor->login == $login) {
+                $pomoc++;
+                $_SESSION['Existuje'] = true;
+                header("http://localhost/NewAccount.php");
+            }
+        }
+        if ($pomoc == 0) {
+            $stmt= $this->pdo->prepare("INSERT INTO uzivatel (login, heslo, meno,priezvisko) VALUES (?, ?, ?, ?)");
+            $hashed_password = password_hash($heslo, PASSWORD_DEFAULT);
+            $stmt->execute([$login, $hashed_password,$meno,$priezvisko]);
+            $_SESSION['Existuje'] = false;
+            header("Location: ../index.php");
+        }
+
     }
 
     public function getALLAutor(){

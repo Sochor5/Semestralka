@@ -3,8 +3,8 @@
 <?php
 session_start();
 include "Post_php/DBpost.php";
-include "phpClass//Post.php";
-include "phpClass//Komentar.php";
+include "phpClass/Post.php";
+include "phpClass/Komentar.php";
 $db = new DB();
 
 if ($_SESSION['logged']){
@@ -65,12 +65,20 @@ if ($_SESSION['logged']){
             } else {
                 if (isset($_GET['EditKoment'])){
                     include "Post_php/edit_Komentar.php";
-                } else {
-                    include "Post_php/view_Page_Posts.php";
+                } else{
+                    if (isset($_GET['view_Page_Authors'])){
+                        include "Post_php/view_Page_Authors.php";
+                    } else {
+                        if (isset($_GET['autorID'])){
+                            include "Post_php/view_Page_Posts.php";
+                        } else {
+                            $_GET['autorID'] = "all";
+                            include "Post_php/view_Page_Posts.php";
+                        }
+
+                    }
                 }
             }
-
-
         }
     } ?>
 </div>
