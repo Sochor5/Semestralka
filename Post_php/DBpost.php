@@ -9,6 +9,66 @@ class DB
     {
         $this->pdo = new PDO('mysql:host=localhost;dbname=semestralka',"root", "dtb456");
 
+        ////////////User ////////////
+        if (isset($_POST['login'])){
+            if (isset($_POST['Heslo'])){
+                $this->login($_POST['login'],$_POST['Heslo']);
+            }
+        }
+        if (isset($_GET['odhlas'])){
+            $this->logout();
+            header("Location: ?");
+            die();
+        }
+        if (isset($_SESSION['logged']) == null){
+            $this->isLogged = false;
+            $_SESSION['id_uzivatela'] = true;
+            $_SESSION['logged'] = false;
+        }
+        if (isset($_POST['email'])){
+            if (isset($_POST['newHeslo'])){
+                if (isset($_POST['newMeno'])){
+                    if (isset($_POST['newPriezvisko'])){
+                        $this->createUser($_POST['email'],$_POST['newHeslo'],$_POST['newMeno'],$_POST['newPriezvisko']);
+                    }
+                }
+            }
+        }
+
+        ////////////POST ////////////
+        if (isset($_POST['id']) == false)
+        if (isset($_POST['text'])) {
+            if (isset($_POST['nazov'])) {
+                if (isset($_POST['strucnyText'])){
+                    $newPost = new Post();
+                    $newPost->text = $_POST['text'];
+                    $newPost->nazov = $_POST['nazov'];
+                    $newPost->strucnyText = $_POST['strucnyText'];
+                    $newPost->id_uzivatela = $_SESSION['id_uzivatela'];
+                    if (isset($_FILES['img']) && $_FILES['img']['error'] == UPLOAD_ERR_OK) {
+                        $newName = "img" . DIRECTORY_SEPARATOR . time() . "_" . $_FILES["img"]["name"];
+                        if (move_uploaded_file($_FILES["img"]["tmp_name"], $newName)) {
+                            $newPost->file = $newName;
+                        }
+                    }
+                    $this->storePost($newPost);
+                }
+            }
+        }
+        if (isset($_GET['delete'])){
+            $this->remove($_GET['delete']);
+        }
+        if ($_SESSION['logged']){
+            if (isset($_GET['edit']) && isset($_POST['id'])){
+                $updatePost = $this->loadOnePost($_POST['id']);
+                $updatePost->text = $_POST['text'];
+                $updatePost->nazov = $_POST['nazov'];
+                $updatePost->strucnyText = $_POST['strucnyText'];
+                $this->storePost($updatePost);
+
+            }
+        }
+
         ////////////LIKE ////////////
         if (isset($_POST['like'])){
                 $this->storeLike();
@@ -23,44 +83,15 @@ class DB
         if (isset($_GET['deleteKoment'])){
             $this->deleteKomentar();
         }
-
         if (isset($_POST['id_komentu'])){
             if (isset($_POST['editTextTomentu'])){
                 $this->editKoment();
             }
         }
-
         if (isset($_POST['textkomentu'])){
             $this->newKoment($_POST['textkomentu']);
         }
 
-        ////////////User ////////////
-        if (isset($_POST['login'])){
-            if (isset($_POST['Heslo'])){
-                $this->login($_POST['login'],$_POST['Heslo']);
-            }
-        }
-        if (isset($_GET['odhlas'])){
-            $this->logout();
-            header("Location: ?");
-            die();
-        }
-
-        if (isset($_SESSION['logged']) == null){
-            $this->isLogged = false;
-            $_SESSION['id_uzivatela'] = true;
-            $_SESSION['logged'] = false;
-        }
-
-        if (isset($_POST['email'])){
-            if (isset($_POST['newHeslo'])){
-                if (isset($_POST['newMeno'])){
-                    if (isset($_POST['newPriezvisko'])){
-                        $this->createUser($_POST['email'],$_POST['newHeslo'],$_POST['newMeno'],$_POST['newPriezvisko']);
-                    }
-                }
-            }
-        }
     }
     ////////////---------------////////////
     ////////////Post ////////////
@@ -74,16 +105,38 @@ class DB
     }
 
     public function storePost(Post $post){
-        if (!$post->idPost) {
-            $sql = "INSERT INTO post (nazov,strucnyText,text, file, id_pouzivatela__fk) VALUES (?, ?, ?, ?,?)";
-            $stmt = $this->pdo->prepare($sql);
-            $stmt->execute([$post->nazov, $post->strucnyText, $post->text, $post->file, $post->id_uzivatela]);
-        }else{
-            $sql = "UPDATE post SET nazov = ?, strucnyText = ?, text = ?   where idPost = ?";
-            $stmt= $this->pdo->prepare($sql);
-            $stmt->execute([$post->nazov, $post->strucnyText, $post->text, $post->idPost]);
-        }
+if (strlen($post->nazov) < 100 && strlen($post->nazov) > 0 && strlen($post->strucnyText) < 200) {
+    if (!$post->idPost) {
+        $sql = "INSERT INTO post (nazov,strucnyText,text, file, id_pouzivatela__fk) VALUES (?, ?, ?, ?,?)";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([$post->nazov, $post->strucnyText, $post->text, $post->file, $post->id_uzivatela]);
         header("Location: ?");
+    }else{
+        $sql = "UPDATE post SET nazov = ?, strucnyText = ?, text = ?   where idPost = ?";
+        $stmt= $this->pdo->prepare($sql);
+        $stmt->execute([$post->nazov, $post->strucnyText, $post->text, $post->idPost]);
+        $id = $_GET['blog1'];
+        header("Location: ?blog=$id");
+        die();
+    }
+
+} else {
+    if (strlen($post->nazov) > 100) {
+        $_GET['chyba'] = 1;
+    }
+    if (strlen($post->nazov) == 0) {
+        $_GET['chyba'] = 3;
+    }
+    if (strlen($post->strucnyText) > 200) {
+        $_GET['chyba'] = 2;
+    }
+    if($post->idPost){
+
+        header("Post_php/edit_Post.php");
+
+    }
+}
+
     }
 
 
@@ -173,13 +226,16 @@ class DB
         $sql = "DELETE FROM komentar WHERE id_komentu = ?";
         $stmt= $this->pdo->prepare($sql);
         $stmt->execute([$_GET['deleteKoment']]);
+        $id = $_GET['blog1'];
+        header("Location: ?blog=$id");
     }
 
     public function editKoment(){
         $sql = "UPDATE komentar SET text_komentu = ? where id_komentu = ?";
         $stmt= $this->pdo->prepare($sql);
         $stmt->execute([$_POST['editTextTomentu'],$_POST['id_komentu']]);
-        header("Location: ?");
+        $id = $_GET['blog1'];
+        header("Location: ?blog=$id");
 
     }
 

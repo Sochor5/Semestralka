@@ -26,7 +26,7 @@ $auth = new DB();
     </div>
     <div class="mainBlog log">
         <form method="post">
-            <input class="loginSize" type="text" name="login" placeholder="Username"><br>
+            <input class="loginSize" type="text" name="login" placeholder="Email"><br>
             <input class="loginSize" type="text" name="Heslo" placeholder="Heslo"><br>
             <input class="loginSize buttonLog" type="submit" value="Prihlásiť sa"><br>
             <a href="NewAccount.php">

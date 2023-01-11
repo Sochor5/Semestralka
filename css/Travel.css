@@ -51,6 +51,16 @@ body {
     margin-left: 5%;
     text-align: center;
     padding: 1.5em;
+
+}
+
+.komentColor{
+    background-color: #ffefd5;
+    margin-right: 5%;
+    margin-left: 5%;
+    margin-bottom: 10px;
+    text-align: center;
+    padding: 1em;
 }
 
 .log {
@@ -126,6 +136,39 @@ input, textarea {
     font-size: 20px;
 
 }
+
+.loginSizeNEW{
+    width: 60%;
+    font-size: 20px;
+
+}
+
+#message {
+    color: #000;
+    position: relative;
+    padding: 20px;
+    margin-top: 10px;
+}
+.valid {
+    color: green;
+}
+
+.valid:before {
+    position: relative;
+    left: -35px;
+    content: "&#10004;";
+}
+
+/* Add a red text color and an "x" icon when the requirements are wrong */
+.invalid {
+    color: red;
+}
+
+.invalid:before {
+    position: relative;
+    left: -35px;
+    content: "&#10006;";
+}
 .strucnyText{
     width: 60%;
 
@@ -150,7 +193,6 @@ button{
     background-color: red;
 }
 .button2 {
-
     background-color: orange;
 }
 

@@ -14,9 +14,8 @@
                         foreach ($db->getALLAutor() as $autor){
                             if ($autor->id_uzivatela == $post->id_pouzivatela__fk && $post->id_pouzivatela__fk != null) {?>
                                 <p>Autor: <?php echo $autor->meno ?> <?php echo $autor->priezvisko  ?> </p>
-                                <p> </p>
                         <?php } } ?>
-                        Tento článok sa páčiv<?php echo $db->GetLikes($post->idPost,1)  ?> čitateľom
+                        Tento článok sa páči <?php echo $db->GetLikes($post->idPost,1)  ?> čitateľom
                     </div>
                 </a>
                 <?php } else {
@@ -28,14 +27,14 @@
                             foreach ($db->getALLAutor() as $autor){
                                 if ($autor->id_uzivatela == $post->id_pouzivatela__fk && $post->id_pouzivatela__fk != null) {?>
                                     <p>Autor: <?php echo $autor->meno ?> <?php echo $autor->priezvisko  ?> </p>
-                                    <p> </p>
+
                                 <?php } } ?>
-                            Tento článok sa páči <?php echo $db->GetLikes($post->idPost,1)  ?> čitateľom
+                             Tento článok sa páči <?php echo $db->GetLikes($post->idPost,1)  ?> čitateľom
                         </div>
                     </a>
                 <?php } }} ?>
         <?php if ($_SESSION['logged']){ ?>
-            <a  href="?New">
+            <a  href="?New&chyba=0">
                 <div class="block newPost">
                     <h2> Novy post</h2>
                 </div>

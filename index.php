@@ -66,7 +66,7 @@ $db = new DB();
             </p><br>
         </main>
         <div class="aboutme">
-            <h3> ABOUT ME</h3>
+            <h3>AUTHORS</h3>
             <img alt="" src="1634331496115.jpg">
             <?php $pocetAutor = 0;
             foreach ($db->getALLAutor() as $autor){

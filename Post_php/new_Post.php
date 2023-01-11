@@ -2,6 +2,17 @@
 <div class="body">
     <div class="columnsBlog">
         <main class="mainBlog">
+            <?php if ($_GET['chyba'] == 1) {
+                ?>   Zadali ste príliš dlhí názov
+                <?php
+            } else {
+                if ($_GET['chyba'] == 2) {
+                    ?>   Zadali ste príliš dlhí stručný popis
+                <?php }else {
+                    if ($_GET['chyba'] == 3 ) {
+                        ?>   Nezadali ste názov článku
+                        <?php
+                    }}}?>
             <div>
                 <form method="post" enctype="multipart/form-data">
                     <input class="nadpis"  name="nazov" placeholder="Nadpis článku"><br>
