@@ -58,7 +58,6 @@ $post = $db->loadOnePost($_GET['blog']);
                 foreach ($db->getALLAutor() as $autor){
                     if ($autor->id_uzivatela == $koment->id_uzivatela && $koment->id_uzivatela != null) {?>
                         <p><?php echo $autor->meno ?> <?php echo $autor->priezvisko  ?> </p>
-                        <p> </p>
                     <?php } } ?>
                     <p><?php echo $koment->text_komentu ?>  </p>
             <?php if ($_SESSION['logged']){
@@ -70,8 +69,8 @@ $post = $db->loadOnePost($_GET['blog']);
                 <a href="?deleteKoment=<?php echo $koment->id_komentu ?>&blog1=<?php echo $post->idPost ?>"" >
                     Vymaz komentar
                 </a><br>
-                </main>
-                <?php } }} } ?>
+
+                <?php }  }} ?></main> <?php } ?>
             <?php if ($_SESSION['logged']){ ?>
             <form method="post">
                 <input class="loginSize" type="text" name="textkomentu" placeholder="Napíšte komentár…">

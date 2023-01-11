@@ -14,7 +14,6 @@ body {
 
 .block:hover{
     background-color: #ffc871;
-
 }
 
 .top5 a:hover{
@@ -36,7 +35,11 @@ body {
     margin-top: 5%;
     margin-bottom: 5%;
 }
-
+.columnsBlogOpacne{
+    display: flex;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
 .main {
     background: #ffffff;
     width: 66%;
@@ -63,9 +66,7 @@ body {
     padding: 1em;
 }
 
-.log {
-    width: 60%;
-}
+
 
 .block {
     margin-top: 3%;
@@ -140,35 +141,8 @@ input, textarea {
 .loginSizeNEW{
     width: 60%;
     font-size: 20px;
-
 }
 
-#message {
-    color: #000;
-    position: relative;
-    padding: 20px;
-    margin-top: 10px;
-}
-.valid {
-    color: green;
-}
-
-.valid:before {
-    position: relative;
-    left: -35px;
-    content: "&#10004;";
-}
-
-/* Add a red text color and an "x" icon when the requirements are wrong */
-.invalid {
-    color: red;
-}
-
-.invalid:before {
-    position: relative;
-    left: -35px;
-    content: "&#10006;";
-}
 .strucnyText{
     width: 60%;
 
@@ -208,19 +182,76 @@ button{
 .mainBlog p{
     text-align: left;
 }
-
 .login{
+    width: 90%;
+    margin-right: 5%;
+    margin-left: 5%;
     text-align: left;
+    padding: 1.5em;
+    background-color: #ffefd5;
 }
 
 .login h1 {
 color: #f67b00;
 }
+.log {
+    width: 40%;
+    background: #ffffff;
+    margin-right: 5%;
+    margin-left: 5%;
+    text-align: center;
+    padding: 1.5em;
 
-.login{
-    background-color: #ffefd5;
 }
-@media all and (max-width: 600px) {
+
+.columnsIndex {
+    display: flex;
+    flex: 1;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    align-items: flex-start;
+}
+/* Container for flexboxes */
+
+.mainIndex {
+    flex: 1;
+    order: 1;
+    top: 5%;
+    background: #ffffff;
+    width: 62%;
+    margin-left: 7%;
+    text-align: center;
+    padding: 1em;
+}
+
+.aboutme {
+    width: 20%;
+    order: 2;
+    background: #ffffff;
+    margin-left: 4%;
+    margin-right: 7%;
+    padding: 1em;
+
+}
+
+.aboutme img{
+    width: 95%;
+}
+
+.aboutme p{
+    text-align: center;
+}
+
+.index h2, h3{
+    text-align: center;
+}
+
+.index p{
+    text-align: left;
+}
+
+
+@media only screen and (max-width: 800px) {
     .columns {
         display: flex;
         flex-direction: column-reverse;
@@ -233,9 +264,9 @@ color: #f67b00;
         padding: 1em;
     }
     .top5{
-        width: 60%;
-        margin-left: 20%;
-        margin-right: 20%;
+        width: 40%;
+        margin-left: 30%;
+        margin-right: 30%;
     }
     .main{
         width: 85%;
@@ -243,16 +274,45 @@ color: #f67b00;
     }
 
 
+    .columnsBlogOpacne{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .login{
+        text-align: center;
+    }
+    .log{
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .columns li:last-of-type a {
+        border-bottom: none;
+    }
+    .columnsIndex {
+        display: block;
+    }
 
-/*
-    .columns a {
+
+    .mainIndex , .aboutme{
+        margin-top: 5%;
+        margin-bottom: 5%;
+        top: 5%;
+        background: #ffffff;
+        width: 80%;
+        margin-left: 7%;
+
+        text-align: center;
+        padding: 1em;
+    }
+    .columnsIndex a {
         text-align: center;
         padding: 10px;
         border-top: 1px solid rgba(255, 255, 255, 0.3);
         border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    }*/
+    }
 
-    .columns li:last-of-type a {
+    .columnsIndex li:last-of-type a {
         border-bottom: none;
     }
 }

@@ -16,15 +16,15 @@ $auth = new DB();
 
 
 <?php include "head_foot/headerALL.php" ?>
-<div class="columnsBlog">
-    <div class="mainBlog login">
+<div class="columnsBlogOpacne">
+    <div class="login">
         <form method="post">
             <h1> travelan</h1>
             <h3>
                 Travelan vám pomáha zdieľať vaše zážitky z cestovania s inými ľuďmi a inspirovať sa zážitkami druhých.</h3>
         </form>
     </div>
-    <div class="mainBlog log">
+    <div class="log">
         <form method="post">
             <input class="loginSize" type="text" name="login" placeholder="Email"><br>
             <input class="loginSize" type="text" name="Heslo" placeholder="Heslo"><br>
