@@ -1,9 +1,4 @@
-<?php?>
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href="../css/headerAFooter.css" type="text/css">
- </head>
+
 <div class="header" >
     <a href="../index.php" class="aktual" >HOME</a>
     <a href="../Post.php">POST</a>

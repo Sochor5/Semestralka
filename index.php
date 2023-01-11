@@ -7,7 +7,6 @@ $db = new DB();
 <!DOCTYPE html>
 <html lang="sk">
 <head>
-    <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="css/headerAFooter.css" type="text/css">
     <link rel="stylesheet" href="css/Travel.css" type="text/css">

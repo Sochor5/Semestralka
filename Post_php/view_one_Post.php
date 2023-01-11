@@ -45,13 +45,13 @@ $post = $db->loadOnePost($_GET['blog']);
     </div>
 
             <div class="columnsBlog">
-                <main class="mainBlog">
+                <aside class="mainBlog">
 
             <h3> Diskusia:
                 <?php echo $db->GetLikes($post->idPost,2 )  ?> príspevky</h3>
             <?php
             foreach ($db->getALLKomentFromPost($_GET['blog']) as $koment){
-                ?> <main class="komentColor"> <?php
+                ?> <aside class="komentColor"> <?php
                 if (isset($_GET['EditKoment'])){
                     include "Post_php/view_one_Post.php";
                 } else {
@@ -66,11 +66,11 @@ $post = $db->loadOnePost($_GET['blog']);
                 <a href="?EditKoment=<?php echo $koment->id_komentu ?>&blog1=<?php echo $post->idPost ?>" >
                     edit komentar
                 </a><br>
-                <a href="?deleteKoment=<?php echo $koment->id_komentu ?>&blog1=<?php echo $post->idPost ?>"" >
+                <a href="?deleteKoment=<?php echo $koment->id_komentu ?>&blog1=<?php echo $post->idPost ?>" >
                     Vymaz komentar
                 </a><br>
 
-                <?php }  }} ?></main> <?php } ?>
+                <?php }  }} ?></aside> <?php } ?>
             <?php if ($_SESSION['logged']){ ?>
             <form method="post">
                 <input class="loginSize" type="text" name="textkomentu" placeholder="Napíšte komentár…">
@@ -80,6 +80,6 @@ $post = $db->loadOnePost($_GET['blog']);
 
 
 
-        </main>
+        </aside>
     </div>
 </div>

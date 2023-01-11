@@ -5,6 +5,7 @@ $auth = new DB();
 ?>
 
 <!DOCTYPE html>
+<html lang="sk">
 <head>
     <meta charset="UTF-8">
     <title>Login</title>

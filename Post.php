@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="sk">
 <?php
 session_start();
 include "Post_php/DBpost.php";
@@ -10,7 +10,7 @@ $db = new DB();
 
 <head>
     <meta charset="UTF-8">
-    <title>Travel</title>
+    <title>Post</title>
     <link rel="stylesheet" href="css/headerAFooter.css" type="text/css">
     <link rel="stylesheet" href="css/Travel.css" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
