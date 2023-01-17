@@ -25,7 +25,7 @@ $auth = new DB();
     <div class="log">
         <form method="post">
             <?php  if ($_GET['zle'] == 1) { ?>
-                <p class="redText"> E-mail alebo heslo, ktoré ste zadali, nie je prepojené s účtom. </p>
+                <p class="redText"> Nesprávne prihlasovacie údaje. </p>
             <?php }?>
             <input class="loginSize" type="text" name="login" placeholder="Email"><br>
             <input class="loginSize" type="password" name="Heslo" placeholder="Heslo"><br>
