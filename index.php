@@ -17,7 +17,7 @@ $db = new DB();
 <div class="body">
     <div class="columnsIndex">
         <main class="mainIndex">
-            <h2 class="index">Lorem Ipsum</h2><br>
+            <h2 class="index">Tento blog je pre každého </h2><br>
             <p class="index">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam luctus elit vel vulputate rhoncus.
                 Nunc dictum mauris in leo pretium, et pellentesque purus volutpat. Integer vestibulum lobortis mi,
                 vel rutrum quam. Sed imperdiet consectetur neque in fringilla. Aenean placerat hendrerit laoreet.

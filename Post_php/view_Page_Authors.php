@@ -4,7 +4,6 @@
 <div class="columns">
     <div class="main">
         <?php /** @var DB $db */
-
             foreach ($db->getALLAutor() as $autor){ ?>
                 <?php $pocet = 0;
                 foreach ($db->getALLPosts() as $post){
@@ -16,14 +15,13 @@
                                 <a href="?autorID=<?php echo $autor->id_uzivatela ?>">
                                     <div class="block">
                                         <h2><?php echo $autor->meno ?> <?php echo $autor->priezvisko  ?> </h2>
-
                                     </div>
                                 </a>
                                 <?php
                             }}}} } ?>
     </div>
     <aside class="top5">
-        <h2> Top authors</h2>
+        <h2>5 authors</h2>
         <?php $pocetAutor = 0;
         foreach ($db->getALLAutor() as $autor){
         $pocet = 0;
@@ -38,5 +36,3 @@
                 <?php }}}}}}?>
     </aside>
 </div>
-
-

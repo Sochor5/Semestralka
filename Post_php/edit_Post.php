@@ -1,7 +1,6 @@
 <?php
 /** @var Post $post */
 /** @var DB $db */
-
 $post = $db->loadOnePost($_GET['edit']);
 ?>
 <div class="body">

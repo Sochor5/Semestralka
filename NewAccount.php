@@ -12,7 +12,6 @@ $auth = new DB();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-
 <?php include "head_foot/headerALL.php" ?>
 <div class="columnsBlog">
     <div class="mainBlog">
@@ -32,12 +31,9 @@ $auth = new DB();
             <input class="loginSizeNEW" type="text" name="newHeslo" placeholder="Zopakujte prosím heslo" id="pw2">
             <span id = "message2" style="color:red"> </span><br>
             <input class="loginSize buttonLog" type="submit"  value="Registrácia"><br>
-
         </form>
     </div>
 </div>
-
-
 <?php include "head_foot/footerALL.php" ?>
 <script>
     function validateForm() {
@@ -68,7 +64,6 @@ $auth = new DB();
             alert("Váš mail je chybný. Správny tvar: mail@domena.domena");
             return false;
         }
-
         var lowerCaseLetters = /[a-z]/g;
         var upperCaseLetters = /[A-Z]/g;
         var numbers = /[0-9]/g;

@@ -1,4 +1,3 @@
-
 <div class="header" >
     <a href="../index.php" class="aktual" >HOME</a>
     <a href="../Post.php">POST</a>
@@ -8,5 +7,4 @@
     <?php }  else {?>
         <a class="rightHeader" href="../login.php">LOGIN</a>
     <?php  } ?>
-    <a  href="#home" class="fa fa-search"></a>
 </div>

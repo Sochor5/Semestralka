@@ -42,7 +42,7 @@
         <?php } ?>
 </div>
     <aside class="top5">
-        <h2> Top blogy</h2>
+        <h2>5 blog</h2>
         <?php $pocet = 0;
         foreach ($db->getALLPosts() as $post){
             if ($post->idPost != 0 ){
@@ -55,8 +55,6 @@
                         if ($_GET['autorID'] == $post->id_pouzivatela__fk){
                             $pocet++?>
                             <a href="?blog=<?php echo $post->idPost ?>" ><p> <?php echo $post->nazov  ?> </p></a>
-                            <?php
-
-                        }}}}}?>
+                            <?php }}}}}?>
     </aside>
 </div>

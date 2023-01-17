@@ -3,7 +3,6 @@ session_start();
 include "Post_php/DBpost.php";
 $auth = new DB();
 ?>
-
 <!DOCTYPE html>
 <html lang="sk">
 <head>
@@ -14,8 +13,6 @@ $auth = new DB();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-
-
 <?php include "head_foot/headerALL.php" ?>
 <div class="columnsBlogOpacne">
     <div class="login">
@@ -36,9 +33,6 @@ $auth = new DB();
         </form>
     </div>
 </div>
-
-
 <?php include "head_foot/footerALL.php" ?>
-
 </body>
 </html>

@@ -7,7 +7,6 @@ include "phpClass/Post.php";
 include "phpClass/Komentar.php";
 $db = new DB();
 ?>
-
 <head>
     <meta charset="UTF-8">
     <title>Post</title>
@@ -15,9 +14,7 @@ $db = new DB();
     <link rel="stylesheet" href="css/Travel.css" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-
 <body>
-
 <?php include "head_foot/headerALL.php" ?>
 <div class="body">
     <?php
@@ -42,7 +39,6 @@ $db = new DB();
                             $_GET['autorID'] = "all";
                             include "Post_php/view_Page_Posts.php";
                         }
-
                     }
                 }
             }

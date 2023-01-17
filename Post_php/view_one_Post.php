@@ -2,9 +2,6 @@
 /** @var Post $post */
 /** @var DB $db */
 /** @var Komentar $koment */
-
-
-
 $post = $db->loadOnePost($_GET['blog']);
     ?>
 <div class="body">
@@ -43,10 +40,8 @@ $post = $db->loadOnePost($_GET['blog']);
             <?php    } }  ?>
         </main>
     </div>
-
             <div class="columnsBlog">
                 <aside class="mainBlog">
-
             <h3> Diskusia:
                 <?php echo $db->GetLikes($post->idPost,2 )  ?> príspevky</h3>
             <?php
@@ -69,7 +64,6 @@ $post = $db->loadOnePost($_GET['blog']);
                 <a href="?deleteKoment=<?php echo $koment->id_komentu ?>&blog1=<?php echo $post->idPost ?>" >
                     Vymaz komentar
                 </a><br>
-
                 <?php }  }} ?></aside> <?php } ?>
             <?php if ($_SESSION['logged']){ ?>
             <form method="post">
@@ -77,9 +71,6 @@ $post = $db->loadOnePost($_GET['blog']);
                 <input class=" buttonLog" type="submit" value="Uverejniť"><br>
             </form>
             <?php  } ?>
-
-
-
         </aside>
     </div>
 </div>

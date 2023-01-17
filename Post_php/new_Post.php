@@ -1,4 +1,3 @@
-
 <div class="body">
     <div class="columnsBlog">
         <main class="mainBlog">
@@ -24,7 +23,5 @@
                 </form>
             </div>
         </main>
-
     </div>
-
 </div>
