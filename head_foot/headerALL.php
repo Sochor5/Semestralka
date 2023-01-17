@@ -5,6 +5,6 @@
     <?php if ($_SESSION['logged']){ ?>
         <a class="rightHeader" href="../login.php?odhlas">ODHLASIT</a>
     <?php }  else {?>
-        <a class="rightHeader" href="../login.php">LOGIN</a>
+        <a class="rightHeader" href="../login.php?zle=0">LOGIN</a>
     <?php  } ?>
 </div>

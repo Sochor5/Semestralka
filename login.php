@@ -24,8 +24,11 @@ $auth = new DB();
     </div>
     <div class="log">
         <form method="post">
+            <?php  if ($_GET['zle'] == 1) { ?>
+                <p class="redText"> E-mail alebo heslo, ktoré ste zadali, nie je prepojené s účtom. </p>
+            <?php }?>
             <input class="loginSize" type="text" name="login" placeholder="Email"><br>
-            <input class="loginSize" type="text" name="Heslo" placeholder="Heslo"><br>
+            <input class="loginSize" type="password" name="Heslo" placeholder="Heslo"><br>
             <input class="loginSize buttonLog" type="submit" value="Prihlásiť sa"><br>
             <a href="NewAccount.php">
                 Vytvoriť nový účet<br>

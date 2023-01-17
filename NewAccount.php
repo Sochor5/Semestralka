@@ -26,9 +26,9 @@ $auth = new DB();
             <input class="loginSizeNEW" type="text" name="newMeno" placeholder="meno" id="kontrolaMena"><br>
             <input class="loginSizeNEW" type="text" name="newPriezvisko" placeholder="priezvisko" id="kontrolaPriezvisko"><br>
             <input class="loginSizeNEW" type="text" name="email" placeholder="email" id="kontrolaemail" ><br>
-            <input class="loginSizeNEW" type="text" name="newHeslo" placeholder="heslo"  id="pw1"><br>
+            <input class="loginSizeNEW" type="password" name="newHeslo" placeholder="heslo"  id="pw1"><br>
 
-            <input class="loginSizeNEW" type="text" name="newHeslo" placeholder="Zopakujte prosím heslo" id="pw2">
+            <input class="loginSizeNEW" type="password" name="newHeslo" placeholder="Zopakujte prosím heslo" id="pw2">
             <span id = "message2" style="color:red"> </span><br>
             <input class="loginSize buttonLog" type="submit"  value="Registrácia"><br>
         </form>

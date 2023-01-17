@@ -17,8 +17,9 @@ class DB
         }
         if (isset($_GET['odhlas'])){
             $this->logout();
-            header("Location: ?");
-            die();
+
+            $_GET['zle'] = 0;
+            header("Location: ../index.php");
         }
         if (isset($_SESSION['logged']) == null){
             $this->isLogged = false;
@@ -246,18 +247,31 @@ if (strlen($post->nazov) < 100 && strlen($post->nazov) > 0 && strlen($post->stru
         if ($name != null && $heslo != null) {
             $stm = $this->pdo->prepare("SELECT * FROM uzivatel WHERE login= ?");
             $stm->execute([$name]);
-            /** @var UserUdaje $meno */
-            $meno = $stm->fetchAll(PDO::FETCH_CLASS)[0];
-            if ($meno->login == $name && password_verify($heslo, $meno->heslo)){
-                $this->isLogged = true;
-                $_SESSION['logged'] = true;
-                $_SESSION['id_uzivatela'] = $meno->id_uzivatela;
-                header("Location: ../index.php");
+            $pocet = $stm->fetchColumn();
+            if ($pocet > 0 ) {
+                $stm = $this->pdo->prepare("SELECT * FROM uzivatel WHERE login= ?");
+                $stm->execute([$name]);
+                /** @var UserUdaje $meno */
+                $meno = $stm->fetchAll(PDO::FETCH_CLASS)[0];
+                if ($meno->login == $name && password_verify($heslo, $meno->heslo)){
+                    $this->isLogged = true;
+                    $_SESSION['logged'] = true;
+                    $_SESSION['id_uzivatela'] = $meno->id_uzivatela;
+                    header("Location: ../index.php");
+            } else {
+                    $this->logout();
+                    $_GET['zle'] = 1;
+                    header("http://localhost/login.php");
+                }
             } else{
                 $this->logout();
+                $_GET['zle'] = 1;
+                header("http://localhost/login.php");
             }
         } else{
             $this->logout();
+            $_GET['zle'] = 1;
+            header("http://localhost/login.php");
         }
     }
 
